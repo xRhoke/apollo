@@ -1,10 +1,6 @@
 import React from 'react';
-import logo from './logo.svg';
+import Home from "./Home";
 import './App.css';
-
-function Home() {
-  return null;
-}
 
 function App() {
   return (

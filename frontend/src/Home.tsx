@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from "axios";
 
 function Home() {
   if (userAuthenticated()) {
@@ -21,6 +22,10 @@ function Home() {
 
 function userAuthenticated(): boolean {
  // axios call an endpoint to get the user
+    axios.get("http://localhost:8080/user").then(result => {
+        console.log("made it here");
+        console.log(result.data);
+    });
 
   return false;
 }

@@ -4,7 +4,7 @@ spring:
       client:
         registration:
           logingov:
-            client-id: urn:gov:gsa:openidconnect.profiles:sp:sso:
+            client-id: urn:gov:gsa:openidconnect.profiles:sp:sso:swf_ntc:apollo
             redirect-uri: http://localhost:8080/login/oauth2/code/logingov
             authorization-grant-type: authorization_code
             scope: openid, email
