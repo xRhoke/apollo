@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import axios from "axios";
 
 function Home() {
-  if (userAuthenticated()) {
+
+  if (false) {
     return (
             <div>
               <p>Hello, user!</p>
@@ -13,21 +14,20 @@ function Home() {
   } else {
     return (
             <div>
-              <a href='/oauth2/authorization/logingov'>Login</a>
-              <h1>Welcome to Apollo!</h1>
+                <button onClick={login}>Login</button>
+                <h1>Welcome to Apollo!</h1>
+                <button onClick={ping}>Ping the Backend</button>
             </div>
     )
   }
 }
 
-function userAuthenticated(): boolean {
- // axios call an endpoint to get the user
-    axios.get("http://localhost:8080/user").then(result => {
-        console.log("made it here");
-        console.log(result.data);
-    });
+function ping() {
+    axios.get("/test").then(result => console.log(result.data));
+}
 
-  return false;
+function login() {
+    axios.get("/oauth2/authorization/logingov").then(result => console.log(JSON.stringify(result, null, 2)))
 }
 
 export default Home;

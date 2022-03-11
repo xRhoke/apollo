@@ -5,7 +5,7 @@ spring:
         registration:
           logingov:
             client-id: urn:gov:gsa:openidconnect.profiles:sp:sso:swf_ntc:apollo
-            redirect-uri: http://localhost:8080/login/oauth2/code/logingov
+            redirect-uri: "{baseUrl}/login/oauth2/code/logingov"
             authorization-grant-type: authorization_code
             scope: openid, email
         provider:
@@ -15,14 +15,3 @@ spring:
             user-info-uri: https://idp.int.identitysandbox.gov/api/openid_connect/userinfo
             user-name-attribute: sub
             jwk-set-uri: https://idp.int.identitysandbox.gov/api/openid_connect/certs
-
-#logingov:
-#  allowed-origin: ${allowedOrigin}
-#  login-success-redirect: ${loginSuccessRedirect}
-#  logout-success-redirect: ${logoutSuccessRedirect}
-#  keystore:
-#    alias: ${keystoreAlias}
-#    file: ${keystorePath}/${keystoreFile}
-#    password: ${keystorePassword}
-#    #keyPassword: \${keyPassword}
-#    type: JKS
