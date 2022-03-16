@@ -63,10 +63,7 @@ class Home extends Component<IProps, IState> {
     }
 
     logout() {
-        axios.post('/logout', null,{
-            withCredentials: true,
-            headers: {'X-XSRF-TOKEN': this.state.csrfToken}
-        });
+        axios.post('/logout', null,{withCredentials: true});
     }
 
     render() {
@@ -81,6 +78,8 @@ class Home extends Component<IProps, IState> {
                 <button onClick={ping}>Ping the Backend (Authenticated)</button>
                 <br/>
                 <button onClick={pingTwo}>Ping the Backend (Public)</button>
+                <br/>
+                <button onClick={getUser}>Log User Info</button>
             </div>
         )
     }
@@ -92,6 +91,10 @@ function ping() {
 
 function pingTwo() {
     axios.get("/api/user/test2").then(result => console.log(result.data));
+}
+
+function getUser() {
+    axios.get("/api/user", { withCredentials: true }).then(result => console.log(result.data));
 }
 
 export default withCookies(Home);
