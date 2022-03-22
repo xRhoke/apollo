@@ -14,6 +14,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .oauth2Login()
+                .defaultSuccessUrl("http://localhost:3000")
+                .failureUrl("http://localhost:3000")
             .and()
             // Allows React to read and send back the XSRF-TOKEN when it manipulates data
             .csrf()

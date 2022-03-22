@@ -18,7 +18,7 @@ interface IUser {
     aud: string[],
     c_hash: string,
     email: string,
-    email_verified: boolean
+    email_verified: boolean,
     exp: string,
     iat: string,
     iss: string,
@@ -52,7 +52,7 @@ class Home extends Component<IProps, IState> {
     }
 
     login() {
-        // There has to be a better way to get this working, but currently manually redirecting to 8080 for login to work
+        //There has to be a better way to get this working, but currently manually redirecting to 8080 for login to work
         let port = (window.location.port ? ':' + window.location.port : '');
         if (port === ':3000') {
             port = ':8080';
