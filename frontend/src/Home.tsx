@@ -7,7 +7,6 @@ interface IProps {
 }
 
 interface IState {
-    isLoading: boolean,
     isAuthenticated: boolean,
     user?: IUser,
     csrfToken?: string
@@ -31,7 +30,6 @@ interface IUser {
 
 class Home extends Component<IProps, IState> {
     state: IState = {
-        isLoading: true,
         isAuthenticated: false,
         user: undefined,
     }
@@ -63,7 +61,11 @@ class Home extends Component<IProps, IState> {
     }
 
     logout() {
-        axios.post('/logout', null,{withCredentials: true});
+        axios.post('/logout', null,{withCredentials: true}).then(response => {
+            if (response.status === 200) {
+                this.setState({user: undefined, isAuthenticated: false});
+            }
+        });
     }
 
     render() {
